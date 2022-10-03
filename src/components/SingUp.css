@@ -1,0 +1,155 @@
+.dis {
+  background: white;
+  display: flex;
+  height: auto;
+  width: 100vw;
+  padding: 10vh 20vw;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-card {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 50px 5px #8640ff65;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  border-radius: 30px;
+  overflow: hidden;
+  gap: 0;
+}
+.left-i img {
+  /* border: 5px solid pink; */
+  width: 30vw;
+}
+.left-i {
+  margin: 0 !important;
+}
+form {
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 30px 40px;
+  background-color: white;
+  border-left: 1px solid rgb(234, 234, 234);
+}
+.s-form {
+  border-left: 1px solid rgb(253, 253, 253);
+}
+.form-1 {
+  background-color: rgb(253, 253, 253) !important;
+}
+.dis h1 {
+  text-align: center;
+  font-size: 1.5rem !important;
+  margin-bottom: 30px !important;
+}
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-direction: column;
+}
+.dis h2 {
+  font-size: 1rem;
+}
+.field {
+  background-color: #f5f3f3;
+  /* background: red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px 0 0 !important;
+  width: 25vw;
+  border-radius: 15px;
+}
+.field i {
+  color: rgb(162, 162, 162);
+}
+.field input {
+  flex: 1;
+  outline: none;
+  border: none;
+  padding: 8px 30px 8px 15px;
+  background-color: #f5f3f3;
+  border-radius: 10px;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7211c7;
+  width: fit-content;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 55px;
+  border-radius: 30px;
+  margin: auto;
+  transition: 0.4s;
+}
+.btns:hover {
+  background-color: #591396;
+}
+.blue {
+  color: #7211c7;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.mgn {
+  margin-top: 25px;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 950px) {
+  .left-i {
+    display: none;
+  }
+
+  .dis {
+    padding: 5vh 25px;
+  }
+  form {
+    padding: 30px 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .field {
+    width: 70vw;
+  }
+  .left-i {
+    display: none;
+  }
+  h1 {
+    font-size: 1rem;
+    padding: 0;
+    margin: 10px !important;
+  }
+  h2 {
+    font-size: 0.8rem;
+  }
+  .field input {
+    font-size: 0.8rem;
+  }
+  .btn {
+    font-size: 0.7rem;
+    margin: auto;
+  }
+  .info {
+    margin: 10px;
+    color: gray !important;
+  }
+}

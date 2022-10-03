@@ -1,0 +1,22 @@
+.afterLogArt {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  flex-direction: column;
+}
+
+.list {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0 50px;
+}
+
+.list li {
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.list li a {
+  text-decoration: none;
+}
