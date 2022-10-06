@@ -15,7 +15,7 @@ const HidMenu = () => {
 
 
 
-const {listshow}=useContext(annex);
+const {listshow,useridcard}=useContext(annex);
 
 
   return (
@@ -30,6 +30,7 @@ const {listshow}=useContext(annex);
       <div className="nav-links">
         <NavLink to="/">Home</NavLink>
     {listshow && <NavLink to="/List">List</NavLink>}   
+    {useridcard && <NavLink to="/IDcard">ID card</NavLink>}   
         <NavLink to="/">About</NavLink>
         <NavLink to="/" onClick={backtouserlogin}>Events</NavLink>
         <NavLink to="/">Contact</NavLink>{" "}

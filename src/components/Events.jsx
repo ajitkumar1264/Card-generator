@@ -8,7 +8,7 @@ const Events = () => {
 const [takeid, settakeid] = useState("");
 
 
-const {loginuser} =useContext(annex);
+const {loginuser,setuseridcard,setIdcard,Idcard} =useContext(annex);
 
 const checkactivity=async(e,id)=>{
 e.preventDefault();
@@ -18,10 +18,9 @@ e.preventDefault();
   if(res.data.status=="found")
   {
     alert("document approved successfully")
-  }
-  else if(res.data.status=="invalid")
-  {
-    alert("submitted id is invalid")
+    setuseridcard(true);
+    setIdcard(id);
+    
   }
   else{
     alert("document is not approved yet") 

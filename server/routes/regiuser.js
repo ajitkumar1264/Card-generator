@@ -98,7 +98,7 @@ routeruser.get("/get/clerk",async(req,res)=>{
 
     try{
 
-        const getclerk =await registerdata.find({PEON:0})
+        const getclerk =await registerdata.find()
         res.status(200).json({getclerk})
 
     }
@@ -267,50 +267,14 @@ routeruser.patch("/api/getuser/commisioner/:id",async(req,res)=>{
 
 })
 
-/*routeruser.get("/checkstatus/:id",async(req,res)=>{
-    
-    const {id}=req.params;
-
-    if(!mongoose.Types.ObjectId.isValid(id))
-    {
-        res.status(404).json({msg:"id is not valid"})
-    }
-
-    try{
-
-        const updateworkout= await registerdata.findOne({_id:id,PEON:1,officer:1,commisioner:1})
-
-        if(updateworkout)
-        {
-           return res.status(200).json({status:"found",msg:"document approved successfully"})
-        }
-       else{
-        return res.status(404).json({status:"nfound",msg:"document not approved"})
-       }
-       
-
-
-    }catch(error)
-    {
-        res.status(404).json({msg:"error in documents",error:error.me})
-
-    }
-
-})*/
-
 
 routeruser.get("/checkstatus/:id",async(req,res)=>{
     
     const {id}=req.params;
 
-   
 
     try{
 
-        if(!mongoose.Types.ObjectId.isValid(id))
-        {
-          returnres.status(404).json({status:"invalid",msg:"id is not valid"})
-        }
 
         const updateworkout= await registerdata.findOne({_id:id,PEON:1,officer:1,commisioner:1})
 
@@ -324,14 +288,27 @@ routeruser.get("/checkstatus/:id",async(req,res)=>{
 
     }catch(error)
     {
-        res.status(404).json({msg:"error in documents",error:error.me})
+        res.status(404).json({status:"invalid",msg:"error in documents",error:error.me})
 
     }
 
 })
 
 
+routeruser.get("/api/idcard/:id",async(req,res)=>{
 
+    const {id}=req.params;
+
+    try{
+ 
+    const idcard= await registerdata.findById(id);
+    res.status(200).json(idcard);
+
+    }catch(error)
+    {
+        res.status(404).json({status:"error",msg:"error in the code "})
+
+   } })
 
 
 module.exports=routeruser;

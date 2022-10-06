@@ -13,8 +13,7 @@ const ValidationList = () => {
  
   const getData = async () => {
     const dat = await axios.get("http://localhost:8080/api/getuser");
-    console.log(dat.data.getuser);
-
+    console.log(dat);
     if (dat.status === "401") {
       alert("error in geting data");
     } else {
@@ -40,7 +39,7 @@ const ValidationList = () => {
     {
       getData();
     }
-     if(dydologin)
+    else if(dydologin)
     {
       getdydoData();
     }

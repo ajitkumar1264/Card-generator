@@ -27,6 +27,8 @@ const [listshow, setlistshow] = useState(false);
 const [clerklogin, setclerklogin] = useState(false);
 const [dydologin, setdydologin] = useState(false);
 const [commisionerlogin, setcommisionerlogin] = useState(false);
+const [useridcard, setuseridcard] = useState(false);
+const [Idcard, setIdcard] = useState("");
 
 
   return (
@@ -34,7 +36,7 @@ const [commisionerlogin, setcommisionerlogin] = useState(false);
 
     
     <Router>
-    <annex.Provider value={{loginuser,setloginuser,currentuser,setcurrentuser,listshow, setlistshow,clerklogin, setclerklogin,dydologin, setdydologin,commisionerlogin, setcommisionerlogin}} >
+    <annex.Provider value={{loginuser,setloginuser,currentuser,setcurrentuser,listshow, setlistshow,clerklogin, setclerklogin,dydologin, setdydologin,commisionerlogin, setcommisionerlogin,useridcard, setuseridcard,Idcard, setIdcard}} >
       <Nav/>
 
    
@@ -46,18 +48,20 @@ const [commisionerlogin, setcommisionerlogin] = useState(false);
       <Home/>
 
 
-      <ICard/>
+
 
       <Routes>
       <Route path="/show/:id" element={<Showuser />} />
       <Route path="/adminLogin" element={<AdminLogin />} />
       <Route path="/" element={<LogIn/>} />
+      <Route path="/IDcard" element={<Show/>}/>
       <Route path="/signUp" element={<SignUp />} />
       </Routes>
       <Events/>
       <Routes>
       <Route path="/form" element={<Form/>}/>
       <Route path="/List" element={<ValidationList/>}/>
+      
       </Routes>
       <About />
       <Showuser/>
