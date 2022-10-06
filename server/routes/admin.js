@@ -22,7 +22,7 @@ routera.post("/api/admin",async(req,res)=>{
 
     if(adminuser)
     {
-        res.json({status:"ok"});
+        res.json({status:"ok",role:type});
         console.log(adminuser)
     }
   else

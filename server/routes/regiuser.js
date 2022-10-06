@@ -3,6 +3,7 @@ const registerdata=require("../models/register")
 const multer=require('multer');
 const path=require('path');
 const mongoose=require('mongoose');
+const { ok, ifError } = require('assert');
 
 const routeruser=express.Router();
 
@@ -91,6 +92,53 @@ routeruser.get("/api/getuser",async(req,res)=>{
         res.status(401).json({status:401,error})
     }
 })
+
+
+routeruser.get("/get/clerk",async(req,res)=>{
+
+    try{
+
+        const getclerk =await registerdata.find({PEON:0})
+        res.status(200).json({getclerk})
+
+    }
+    catch(error)
+    {
+        res.status(500).json({status:500,error:error.message})
+    }
+})
+
+
+routeruser.get("/get/dydo",async(req,res)=>{
+
+    try{
+
+        const getdydo =await registerdata.find({PEON:1})
+        res.status(200).json({getdydo})
+
+    }
+    catch(error)
+    {
+        res.status(500).json({status:500,error:error.message})
+    }
+})
+
+
+routeruser.get("/get/commisioner",async(req,res)=>{
+
+    try{
+
+        const getcom =await registerdata.find({officer:1})
+        res.status(200).json({getcom})
+
+    }
+    catch(error)
+    {
+        res.status(500).json({status:500,error:error.message})
+    }
+})
+
+
 
 routeruser.get("/api/getuser/:id",async(req,res)=>{
 
@@ -218,6 +266,72 @@ routeruser.patch("/api/getuser/commisioner/:id",async(req,res)=>{
     }
 
 })
+
+/*routeruser.get("/checkstatus/:id",async(req,res)=>{
+    
+    const {id}=req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id))
+    {
+        res.status(404).json({msg:"id is not valid"})
+    }
+
+    try{
+
+        const updateworkout= await registerdata.findOne({_id:id,PEON:1,officer:1,commisioner:1})
+
+        if(updateworkout)
+        {
+           return res.status(200).json({status:"found",msg:"document approved successfully"})
+        }
+       else{
+        return res.status(404).json({status:"nfound",msg:"document not approved"})
+       }
+       
+
+
+    }catch(error)
+    {
+        res.status(404).json({msg:"error in documents",error:error.me})
+
+    }
+
+})*/
+
+
+routeruser.get("/checkstatus/:id",async(req,res)=>{
+    
+    const {id}=req.params;
+
+   
+
+    try{
+
+        if(!mongoose.Types.ObjectId.isValid(id))
+        {
+          returnres.status(404).json({status:"invalid",msg:"id is not valid"})
+        }
+
+        const updateworkout= await registerdata.findOne({_id:id,PEON:1,officer:1,commisioner:1})
+
+       if(!updateworkout){
+         return res.status(201).json({status:"nfound",msg:"document not approved yet" })
+        }
+      
+        res.status(200).json({status:"found",msg:"document approved successfully"})
+       
+
+
+    }catch(error)
+    {
+        res.status(404).json({msg:"error in documents",error:error.me})
+
+    }
+
+})
+
+
+
 
 
 module.exports=routeruser;

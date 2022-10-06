@@ -1,12 +1,16 @@
 import { useState } from "react";
 import "./admin.css";
 import { useNavigate } from "react-router-dom"
+import { useContext } from "react";
+import annex from "./Context/Context"
 
 const AdminLogin = () => {
  
   const [type, settype] = useState(null);
   const [id, setid] = useState("");
   const [password, setpassword] = useState("")
+
+  const {setlistshow,setclerklogin,setdydologin,setcommisionerlogin}=useContext(annex)
   
   const nav=useNavigate();
   console.log(type);
@@ -32,6 +36,29 @@ const AdminLogin = () => {
       {
           alert("successfully login admin")
           nav("/")
+          setlistshow(true);
+
+          if(data.role==="clerk")
+          {
+            alert("clerk login successfully")
+            setclerklogin(true);
+            setdydologin(false);
+            setcommisionerlogin(false);
+          }
+         else if(data.role==="dydo")
+          {
+            alert(" Distric Youth Development Officer is login")
+            setdydologin(true);
+            setcommisionerlogin(false);
+            setclerklogin(false);
+          }
+          else if(data.role==="commissioner")
+          {
+            alert("commissioner login successfully");
+            setcommisionerlogin(true);
+            setclerklogin(false);
+            setdydologin(false);
+          }
       
       }
       else{

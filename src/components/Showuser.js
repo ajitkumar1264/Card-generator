@@ -17,16 +17,18 @@ const rejected=async(id)=>{
   .then((res)=>{
     const dat=res.data;
     console.log(dat)
-   alert("deleted the data")
     setdata([dat])
-    nav("/")
   })
 
-
+  alert("deleted the data")
+  nav("/List");
 }
 
+const Backmode=()=>{
+  nav("/List")
+}
 
-        const profilenew=async()=>{
+  const profilenew=async()=>{
     
             await axios.get(`http://localhost:8080/api/getuser/${id}`).
             then((res)=>{
@@ -139,6 +141,7 @@ const rejected=async(id)=>{
           <input className=" btns btn-s" type="submit" value="Approve" />
           <input className="btns btn-r" type="submit"  value="Reject" />
           <button onClick={()=>{rejected(ele._id)}}>reject</button>
+          <button onClick={Backmode}>Back</button>
         </div>
       </div>
     </form>

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LogIn.css";
 import { Link,useNavigate } from "react-router-dom";
+import annex from './Context/Context'
 
 export default function LogIn() {
  
+const {setloginuser,setcurrentuser}=useContext(annex);
 
   const [email, setemail] = useState("")
  const [password, setpassword] = useState("")
@@ -29,6 +31,8 @@ const data=await response.json();
 if(data.user)
 {
   alert('login successfully')
+  setloginuser(true);
+  setcurrentuser(email)
   nav("/")
 }
 else{

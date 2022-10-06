@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Nav from "./components/Nav";
 import LogIn from "./components/LogIn";
 import Home from "./components/home";
@@ -15,19 +15,39 @@ import Data from "./components/Datafile"
 import ValidationList from "./components/ValidationList";
 import Show from "./components/Show";
 import Showuser from "./components/Showuser";
+import annex from './components/Context/Context'
+import ICard from "./components/ICard";
 
 const App = () => {
+
+
+const [loginuser, setloginuser] = useState(false);
+const [currentuser, setcurrentuser] = useState("")
+const [listshow, setlistshow] = useState(false);
+const [clerklogin, setclerklogin] = useState(false);
+const [dydologin, setdydologin] = useState(false);
+const [commisionerlogin, setcommisionerlogin] = useState(false);
+
+
   return (
 
 
     
     <Router>
+    <annex.Provider value={{loginuser,setloginuser,currentuser,setcurrentuser,listshow, setlistshow,clerklogin, setclerklogin,dydologin, setdydologin,commisionerlogin, setcommisionerlogin}} >
       <Nav/>
+
+   
+
       <Routes>
       <Route path="/hidMenu" element={<HidMenu />} />
       
       </Routes>
       <Home/>
+
+
+      <ICard/>
+
       <Routes>
       <Route path="/show/:id" element={<Showuser />} />
       <Route path="/adminLogin" element={<AdminLogin />} />
@@ -42,6 +62,7 @@ const App = () => {
       <About />
       <Showuser/>
       <Contact />
+      </annex.Provider>
     </Router>
   
 

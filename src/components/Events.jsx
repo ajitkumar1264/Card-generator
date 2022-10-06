@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useContext,useState } from "react";
 import {NavLink} from 'react-router-dom'
+import annex from "./Context/Context"
+import axios from "axios"
 
 const Events = () => {
+
+const [takeid, settakeid] = useState("");
+
+
+const {loginuser} =useContext(annex);
+
+const checkactivity=async(e,id)=>{
+e.preventDefault();
+ await axios.get(`http://localhost:8080/checkstatus/${id}`)
+ .then((res)=>{
+  console.log(res)
+  if(res.data.status=="found")
+  {
+    alert("document approved successfully")
+  }
+  else if(res.data.status=="invalid")
+  {
+    alert("submitted id is invalid")
+  }
+  else{
+    alert("document is not approved yet") 
+  }
+ }).catch((err)=>{
+  console.log(err.message)
+ })
+}
+
+
   return (
+   <>
+   {loginuser && (
     <div>
       <header className="event-sec">
         <center>
@@ -54,8 +86,15 @@ const Events = () => {
             </div>
           </div>
         </div>
+        <input placeholder="enter the id here" onChange={(e)=>settakeid(e.target.value)} value={takeid}/>
+        <button onClick={(e)=>checkactivity(e,takeid)} >activit status</button>
       </main>
     </div>
+    )}
+
+    </>
+
+    
   );
 };
 

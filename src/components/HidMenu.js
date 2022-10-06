@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
+import annex from "./Context/Context"
+
+
+
 const HidMenu = () => {
+
+  const backtouserlogin=()=>{
+
+    alert("login first")
+  }
+
+
+
+const {listshow}=useContext(annex);
+
+
   return (
     <div className="hid-menu">
       <div className="close">
@@ -13,11 +28,11 @@ const HidMenu = () => {
         </IconButton>
       </div>
       <div className="nav-links">
-        <a href="/">Home</a>
-        <a href="/List">List</a>
-        <a href="/">About</a>
-        <a href="/">Events</a>
-        <a href="/">Contact</a>{" "}
+        <NavLink to="/">Home</NavLink>
+    {listshow && <NavLink to="/List">List</NavLink>}   
+        <NavLink to="/">About</NavLink>
+        <NavLink to="/" onClick={backtouserlogin}>Events</NavLink>
+        <NavLink to="/">Contact</NavLink>{" "}
       </div>
       <div className="nav-btn">
         <Link to="/adminLogin">
